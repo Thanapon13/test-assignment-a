@@ -1,0 +1,13 @@
+model Blog {
+  id          String      @id @default(uuid())
+  title       String
+  slug        String      @unique
+  content     String
+  excerpt     String
+  sender_name String
+  status      String      @default("unpublished")
+  view_count  Int         @default(0)
+  posted_at   DateTime    @default(now())
+  images      BlogImage[]
+  comments    Comment[]
+}

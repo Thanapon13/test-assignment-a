@@ -1,0 +1,8 @@
+model BlogImage {
+  id         String   @id @default(uuid())
+  blog_id    String
+  url        String
+  order      Int
+  created_at DateTime @default(now())
+  blog       Blog     @relation(fields: [blog_id], references: [id], onDelete: Cascade)
+}

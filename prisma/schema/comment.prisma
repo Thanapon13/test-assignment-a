@@ -1,0 +1,9 @@
+model Comment {
+  id          String   @id @default(uuid())
+  blog_id     String
+  sender_name String
+  message     String
+  status      String   @default("PENDING")
+  created_at  DateTime @default(now())
+  blog        Blog     @relation(fields: [blog_id], references: [id], onDelete: Cascade)
+}

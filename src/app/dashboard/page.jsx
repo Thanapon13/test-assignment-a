@@ -1,7 +1,7 @@
-import Container_blog from "@/components/blog/container_blog";
-import { getBlogsPaginated } from "@/app/blog/actions";
+import Container_Dashboard from "@/components/admin/container-dashboard";
+import { getBlogsPaginated, getCommentsByStatus } from "../blog/actions";
 
-const HomePage = async ({ searchParams }) => {
+const DashboardPage = async ({ searchParams }) => {
   const params = await searchParams;
   const currentPage = parseInt(params.page) || 1;
   const search = params.search || "";
@@ -12,18 +12,20 @@ const HomePage = async ({ searchParams }) => {
     limit,
     search,
   );
+  const comments = await getCommentsByStatus("pending");
 
   return (
-    <main>
-      <Container_blog
+    <div>
+      <Container_Dashboard
         data={blogs}
         total={total}
         currentPage={currentPage}
         totalPages={totalPages}
+        comments={comments}
         search={search}
       />
-    </main>
+    </div>
   );
 };
 
-export default HomePage;
+export default DashboardPage;
