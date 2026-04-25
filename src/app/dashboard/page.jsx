@@ -1,7 +1,10 @@
 import Container_Dashboard from "@/components/admin/container-dashboard";
 import { getBlogsPaginated, getCommentsByStatus } from "../blog/actions";
+import { unstable_noStore as noStore } from "next/cache";
 
 const DashboardPage = async ({ searchParams }) => {
+  noStore();
+
   const params = await searchParams;
   const currentPage = parseInt(params.page) || 1;
   const search = params.search || "";

@@ -136,9 +136,8 @@ export const addComment = async (prevState, formData) => {
 export const getCommentsByStatus = async status => {
   try {
     const comments = await prisma.comment.findMany({
-      where: {
-        status: status || "pending",
-      },
+      where: { status: status || "pending" },
+      orderBy: { created_at: "desc" },
     });
     return comments;
   } catch (error) {
