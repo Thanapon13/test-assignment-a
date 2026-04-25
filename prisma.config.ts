@@ -20,7 +20,6 @@
 import { defineConfig } from "prisma/config";
 
 export default defineConfig({
-  earlyAccess: true,
   schema: "prisma/schema",
   datasource: {
     url: process.env.DIRECT_URL,
