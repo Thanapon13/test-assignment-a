@@ -55,7 +55,7 @@ const BlogForm = ({ open, onOpenChange, blog, authenticateUser }) => {
   useEffect(() => {
     if (blog) {
       const formattedImages =
-        blog.images?.map(img => ({
+        blog.images?.map((img) => ({
           id: img.id,
           url: img.url,
           file: null,
@@ -68,7 +68,7 @@ const BlogForm = ({ open, onOpenChange, blog, authenticateUser }) => {
         excerpt: blog.excerpt || "",
         sender_name: blog.sender_name || "",
         status: blog.status || "unpublished",
-        selectedImageIds: blog.images?.map(img => img.id) || [],
+        selectedImageIds: blog.images?.map((img) => img.id) || [],
       });
 
       setBlogImages(formattedImages);
@@ -94,9 +94,9 @@ const BlogForm = ({ open, onOpenChange, blog, authenticateUser }) => {
     }
   }, [message, onOpenChange]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -121,12 +121,12 @@ const BlogForm = ({ open, onOpenChange, blog, authenticateUser }) => {
               <input
                 type="hidden"
                 name="admin_id"
-                value={authenticateUser.id}
+                value={authenticateUser?.id}
               />
               <input
                 type="hidden"
                 name="admin_type"
-                value={authenticateUser.type}
+                value={authenticateUser?.type}
               />
             </>
           )}
@@ -156,8 +156,8 @@ const BlogForm = ({ open, onOpenChange, blog, authenticateUser }) => {
                 <FieldLabel htmlFor="status">Status</FieldLabel>
                 <Select
                   value={formData.status}
-                  onValueChange={value =>
-                    setFormData(prev => ({ ...prev, status: value }))
+                  onValueChange={(value) =>
+                    setFormData((prev) => ({ ...prev, status: value }))
                   }
                 >
                   <SelectTrigger id="status">
@@ -217,11 +217,11 @@ const BlogForm = ({ open, onOpenChange, blog, authenticateUser }) => {
               <FieldContent>
                 <ImageGalleryUpload
                   images={blogImages}
-                  onChange={imgs => {
+                  onChange={(imgs) => {
                     setBlogImages(imgs);
-                    setFormData(prev => ({
+                    setFormData((prev) => ({
                       ...prev,
-                      selectedImageIds: imgs.map(img => img.id),
+                      selectedImageIds: imgs.map((img) => img.id),
                     }));
                   }}
                 />
