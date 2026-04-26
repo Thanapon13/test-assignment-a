@@ -4,7 +4,14 @@
 
 ## 🚀 Live Demo
 
-[https://test-assignment-isi828ja6-thanapons-projects.vercel.app/](https://test-assignment-isi828ja6-thanapons-projects.vercel.app/)
+https://test-assignment-3qwi9bige-thanapons-projects.vercel.app/
+
+**Admin Panel:** https://test-assignment-3qwi9bige-thanapons-projects.vercel.app/admin
+
+**Admin Credentials:**
+
+- Email: admin01@gmail.com
+- Password: Admin12345
 
 ---
 
@@ -65,9 +72,21 @@ JWT_EXPIRES_IN=30d
 NODE_ENV=local
 ```
 
-### 3.1 ตั้งค่า cloudinary
+### 3.1 ตั้งค่า Cloudinary
 
-เอาค่าจาก CLOUDINARY_NAME ,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET : https://cloudinary.com/
+1. ไปที่ [https://cloudinary.com/](https://cloudinary.com/) แล้ว Login หรือ Register
+2. ไปที่ **Dashboard** → copy ค่าดังนี้:
+   - `Cloud Name`
+   - `API Key`
+   - `API Secret`
+3. ไปที่ **Media Library** → กด **New Folder** → ตั้งชื่อว่า `blogImages`
+4. ใส่ค่าใน `.env`:
+
+```env
+CLOUDINARY_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
 
 ### 4. Setup Database
 
