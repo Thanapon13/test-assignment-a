@@ -232,8 +232,6 @@ Admin Panel: [http://localhost:3000/admin](http://localhost:3000/admin)
 - รูปภาพต่อ Blog สูงสุด 6 รูป
 - ไม่มีระบบ notification เมื่อมี comment ใหม่ Admin ต้องเข้ามาเช็คเอง
 - Polling comment ทุก 10 วินาที แทนที่จะใช้ WebSocket
-- ไม่มี loading page ระหว่างรอ
-- ไม่ที Skeleton loading ระหว่างรอ
 
 ### สิ่งที่จะพัฒนาเพิ่มถ้ามีเวลา
 
@@ -241,4 +239,3 @@ Admin Panel: [http://localhost:3000/admin](http://localhost:3000/admin)
 - ป้องกัน duplicate view count
 - Rich text editor สำหรับเขียน Blog
 - ระบบ tag หรือ category ของ Blog
-- ทำ Skeleton และ loading state
