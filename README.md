@@ -182,6 +182,40 @@ Admin Panel: [http://localhost:3000/admin](http://localhost:3000/admin)
 
 ---
 
+## 🗄️ Database Schema Design
+
+### การออกแบบ
+
+**User** — เก็บข้อมูล admin
+
+- ไม่มีความสัมพันธ์กับ Blog โดยตรง
+- ใช้ `type` field แยก USER/ADMIN แทนการแยก table
+
+**Blog** — ข้อมูลหลักของ blog post
+
+- มี `slug` unique สำหรับ SEO-friendly URL
+- มี `status` สำหรับ Publish/Unpublish
+- มี `view_count` นับผู้เข้าชม
+
+**BlogImage** — รูปภาพของแต่ละ blog (1 Blog : Many Images)
+
+- มี `order` สำหรับจัดลำดับรูป
+- FK → Blog (onDelete: Cascade)
+
+**Comment** — comment ของแต่ละ blog (1 Blog : Many Comments)
+
+- มี `status` = pending/approved/rejected
+- FK → Blog (onDelete: Cascade)
+
+### เหตุผลในการออกแบบ
+
+- ใช้ UUID แทน auto-increment เพื่อความปลอดภัย และป้องกันการ enumerate ข้อมูล
+- onDelete Cascade เพื่อลบ images และ comments อัตโนมัติเมื่อลบ blog ไม่ให้มีข้อมูลขยะค้างอยู่
+- แยก BlogImage ออกมาเป็น table แยก เพื่อรองรับหลายรูปต่อ blog และจัดลำดับด้วย `order`
+- Comment มี `status` (PENDING/APPROVED/REJECTED) เพื่อให้ admin approve ก่อนแสดงผล
+- User ใช้ `type` field แยก USER/ADMIN แทนการแยก table เพราะ permission มีแค่ 2 ระดับ ไม่ซับซ้อนพอที่จะแยก table
+- Blog มี `excerpt` แยกจาก `content` เพื่อใช้แสดงในหน้ารวม Blog โดยไม่ต้อง load content ทั้งหมด
+
 ## 📝 Assumptions & ข้อจำกัด
 
 ### Assumptions ที่กำหนดเอง
