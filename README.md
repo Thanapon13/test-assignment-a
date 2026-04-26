@@ -181,3 +181,30 @@ pnpm dev
 Admin Panel: [http://localhost:3000/admin](http://localhost:3000/admin)
 
 ---
+
+## 📝 Assumptions & ข้อจำกัด
+
+### Assumptions ที่กำหนดเอง
+
+- **Admin Account**: ระบบไม่มีหน้า ปลี่ยน type จาก user เป็น admin หลัง Register สำหรับ Admin ต้อง insert ข้อมูลเข้า database โดยตรง
+- **Blog Status**: Blog ที่สร้างใหม่จะมี status เป็น `unpublished` เสมอ ต้อง Admin เปลี่ยนเป็น `published` เอง
+- **Image Upload**: รูปภาพถูก upload ไปเก็บที่ Cloudinary ไม่ได้เก็บใน server โดยตรง
+- **Comment Validation**: ข้อความ comment รองรับเฉพาะภาษาไทยและตัวเลข โดยใช้ regex `/^[ก-๙0-9\s]+$/`
+- **View Count**: นับ view ทุกครั้งที่เข้าหน้ารายละเอียด Blog ไม่ได้ป้องกัน duplicate views
+
+### ข้อจำกัด
+
+- ไม่มีระบบ Register สำหรับ user ทั่วไป (เฉพาะ Admin เท่านั้น)
+- รูปภาพต่อ Blog สูงสุด 6 รูป
+- ไม่มีระบบ notification เมื่อมี comment ใหม่ Admin ต้องเข้ามาเช็คเอง
+- Polling comment ทุก 10 วินาที แทนที่จะใช้ WebSocket
+- ไม่มี loading page ระหว่างรอ
+- ไม่ที Skeleton loading ระหว่างรอ
+
+### สิ่งที่จะพัฒนาเพิ่มถ้ามีเวลา
+
+- ระบบ notification เมื่อมี comment ใหม่
+- ป้องกัน duplicate view count
+- Rich text editor สำหรับเขียน Blog
+- ระบบ tag หรือ category ของ Blog
+- ทำ Skeleton และ loading state
