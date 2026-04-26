@@ -4,9 +4,9 @@
 
 ## 🚀 Live Demo
 
-https://test-assignment-3qwi9bige-thanapons-projects.vercel.app/
+https://test-assignment-zge6236mb-thanapons-projects.vercel.app/
 
-**Admin Panel:** https://test-assignment-3qwi9bige-thanapons-projects.vercel.app/admin
+**Admin Panel:** https://test-assignment-zge6236mb-thanapons-projects.vercel.app/admin
 
 **Admin Credentials:**
 
